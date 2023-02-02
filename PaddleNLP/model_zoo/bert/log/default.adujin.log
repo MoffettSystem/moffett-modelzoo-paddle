@@ -1,0 +1,1 @@
+[{'name': 'adujin', 'rank': -1, 'replicas': 1, 'dtype': 'cpu', 'candidate': '127.0.1.1:43266', 'endpoints': '127.0.1.1:43267'}]

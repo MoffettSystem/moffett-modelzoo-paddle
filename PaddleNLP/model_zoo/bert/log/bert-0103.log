@@ -1,0 +1,700 @@
+grep: warning: GREP_OPTIONS is deprecated; please use an alias or script
+-----------  Configuration Arguments -----------
+adam_epsilon: 1e-06
+batch_size: 32
+device: cpu
+learning_rate: 2e-05
+logging_steps: 1
+max_seq_length: 128
+max_steps: -1
+model_name_or_path: bert-base-uncased
+model_type: bert
+num_train_epochs: 3
+output_dir: ./tmp_1222/
+save_steps: 500
+scale_loss: 32768
+seed: 42
+task_name: SST2
+use_amp: 0
+warmup_proportion: 0.1
+warmup_steps: 0
+weight_decay: 0.0
+------------------------------------------------
+Found cached dataset glue (/root/.cache/huggingface/datasets/glue/sst2/1.0.0/2317814e65d7d93cd188e60001668faf987c9a71ae556aa6be0350d130923366)
+[32m[2023-01-03 09:10:37,514] [    INFO][0m - Already cached /root/.paddlenlp/models/bert-base-uncased/bert-base-uncased-vocab.txt[0m
+[32m[2023-01-03 09:10:37,529] [    INFO][0m - tokenizer config file saved in /root/.paddlenlp/models/bert-base-uncased/tokenizer_config.json[0m
+[32m[2023-01-03 09:10:37,529] [    INFO][0m - Special tokens file saved in /root/.paddlenlp/models/bert-base-uncased/special_tokens_map.json[0m
+Loading cached processed dataset at /root/.cache/huggingface/datasets/glue/sst2/1.0.0/2317814e65d7d93cd188e60001668faf987c9a71ae556aa6be0350d130923366/cache-0566557a030cab95.arrow
+Found cached dataset glue (/root/.cache/huggingface/datasets/glue/sst2/1.0.0/2317814e65d7d93cd188e60001668faf987c9a71ae556aa6be0350d130923366)
+Loading cached processed dataset at /root/.cache/huggingface/datasets/glue/sst2/1.0.0/2317814e65d7d93cd188e60001668faf987c9a71ae556aa6be0350d130923366/cache-9dbf0bcdf73edfa0.arrow
+[32m[2023-01-03 09:10:37,991] [    INFO][0m - Model config BertConfig {
+  "attention_probs_dropout_prob": 0.1,
+  "fuse": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "paddlenlp_version": null,
+  "pool_act": "tanh",
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+[0m
+[33m[2023-01-03 09:10:47,952] [ WARNING][0m - Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForSequenceClassification: ['cls.predictions.transform.bias', 'cls.predictions.decoder_weight', 'cls.seq_relationship.bias', 'cls.predictions.layer_norm.bias', 'cls.predictions.layer_norm.weight', 'cls.predictions.decoder_bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.weight']
+- This IS expected if you are initializing BertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).[0m
+[33m[2023-01-03 09:10:47,953] [ WARNING][0m - Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.[0m
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I20230103 09:10:49.250517   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:10:49.250566   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:49.250571   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:49.250576   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:10:49.250582   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:10:49.250587   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:10:49.250592   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:10:49.250597   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:10:49.250602   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:10:49.250607   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:10:49.250610   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:10:49.250615   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:10:49.250620   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:10:50.825177   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:10:51.351518   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 467
+memory_used: 1422M
+I20230103 09:10:51.513936   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:10:51.525832   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:10:51.525866   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:51.525871   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:51.525875   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:10:51.525885   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:10:51.525890   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:10:51.525894   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:10:51.525899   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:10:51.525904   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:10:51.525909   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:10:51.525924   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:10:51.525929   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:10:51.525934   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:10:53.088992   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:10:53.414551   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1423M
+I20230103 09:10:53.577466   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:10:53.582151   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:10:53.582170   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:53.582175   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:53.582180   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:10:53.582185   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:10:53.582190   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:10:53.582194   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:10:53.582199   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:10:53.582203   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:10:53.582208   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:10:53.582212   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:10:53.582217   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:10:53.582222   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:10:55.191517   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:10:55.509035   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:10:55.671561   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:10:55.676138   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:10:55.676155   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:55.676160   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:55.676165   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:10:55.676172   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:10:55.676175   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:10:55.676180   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:10:55.676185   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:10:55.676189   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:10:55.676194   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:10:55.676198   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:10:55.676203   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:10:55.676208   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:10:57.213199   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:10:57.529538   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 469
+memory_used: 1422M
+I20230103 09:10:57.691526   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:10:57.696116   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:10:57.696133   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:57.696139   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:57.696144   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:10:57.696156   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:10:57.696161   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:10:57.696166   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:10:57.696169   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:10:57.696174   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:10:57.696178   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:10:57.696183   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:10:57.696187   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:10:57.696192   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:10:59.234860   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:10:59.551813   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 469
+memory_used: 1422M
+I20230103 09:10:59.714228   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:10:59.718808   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:10:59.718827   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:59.718832   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:10:59.718835   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:10:59.718842   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:10:59.718847   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:10:59.718850   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:10:59.718855   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:10:59.718859   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:10:59.718864   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:10:59.718868   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:10:59.718873   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:10:59.718878   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:01.256507   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:01.572746   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:01.735603   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:01.740159   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:01.740176   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:01.740182   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:01.740186   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:01.740193   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:01.740197   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:01.740202   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:01.740206   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:01.740211   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:01.740216   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:01.740219   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:01.740224   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:01.740228   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:03.278247   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:03.594584   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:03.757632   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:03.762603   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:03.762621   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:03.762626   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:03.762630   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:03.762637   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:03.762642   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:03.762646   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:03.762651   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:03.762655   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:03.762660   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:03.762665   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:03.762670   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:03.762673   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:05.300031   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:05.619704   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:05.776690   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:05.782948   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:05.782966   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:05.782971   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:05.782976   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:05.782984   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:05.782989   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:05.782992   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:05.782997   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:05.783001   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:05.783006   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:05.783010   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:05.783015   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:05.783020   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:07.321825   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:07.634451   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 467
+memory_used: 1422M
+I20230103 09:11:07.789911   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:07.795177   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:07.795197   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:07.795202   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:07.795207   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:07.795214   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:07.795219   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:07.795223   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:07.795228   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:07.795233   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:07.795238   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:07.795243   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:07.795253   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:07.795257   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:09.343333   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:09.654688   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:09.809733   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:09.814446   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:09.814464   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:09.814469   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:09.814474   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:09.814481   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:09.814486   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:09.814489   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:09.814494   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:09.814498   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:09.814502   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:09.814507   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:09.814512   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:09.814517   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:11.365018   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:11.676890   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:11.832310   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:11.837958   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:11.837977   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:11.837981   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:11.837986   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:11.837992   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:11.837997   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:11.838001   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:11.838006   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:11.838011   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:11.838016   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:11.838019   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:11.838023   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:11.838028   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:13.386693   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:13.697556   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:13.852627   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:13.857498   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:13.857517   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:13.857522   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:13.857527   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:13.857534   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:13.857538   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:13.857550   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:13.857555   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:13.857559   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:13.857564   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:13.857568   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:13.857573   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:13.857578   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:15.408290   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:15.719683   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:15.874830   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:15.879534   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:15.879551   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:15.879556   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:15.879560   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:15.879567   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:15.879571   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:15.879576   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:15.879580   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:15.879585   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:15.879590   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:15.879595   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:15.879598   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:15.879603   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:17.429955   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:17.741149   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:17.896318   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:17.901587   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:17.901604   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:17.901609   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:17.901613   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:17.901620   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:17.901625   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:17.901629   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:17.901634   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:17.901639   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:17.901643   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:17.901648   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:17.901652   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:17.901657   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:19.451742   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:19.763294   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:19.918711   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:19.923537   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:19.923555   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:19.923559   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:19.923564   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:19.923571   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:19.923575   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:19.923580   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:19.923584   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:19.923589   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:19.923593   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:19.923597   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:19.923602   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:19.923606   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:21.473332   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:21.784606   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:21.939577   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:21.944197   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:21.944216   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:21.944221   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:21.944224   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:21.944231   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:21.944236   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:21.944240   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:21.944245   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:21.944249   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:21.944254   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:21.944258   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:21.944263   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:21.944267   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:23.495028   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:23.806313   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:23.961503   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:23.966686   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:23.966706   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:23.966710   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:23.966714   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:23.966722   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:23.966727   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:23.966730   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:23.966735   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:23.966740   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:23.966744   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:23.966749   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:23.966754   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:23.966758   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:25.516707   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:25.827323   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1423M
+I20230103 09:11:25.982618   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:25.987167   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:25.987185   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:25.987190   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:25.987195   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:25.987201   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:25.987205   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:25.987210   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:25.987215   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:25.987219   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:25.987223   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:25.987228   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:25.987232   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:25.987237   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:27.538539   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:27.850185   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:28.005580   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:28.010428   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:28.010445   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:28.010450   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:28.010454   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:28.010461   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:28.010466   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:28.010470   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:28.010475   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:28.010479   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:28.010484   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:28.010488   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:28.010493   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:28.010497   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:29.560104   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:29.871228   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:30.026297   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:30.031620   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:30.031638   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:30.031643   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:30.031648   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:30.031654   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:30.031659   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:30.031664   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:30.031674   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:30.031679   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:30.031683   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:30.031688   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:30.031692   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:30.031697   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:31.581739   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:31.893162   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:32.048228   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:32.052811   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:32.052829   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:32.052834   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:32.052839   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:32.052845   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:32.052850   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:32.052855   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:32.052858   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:32.052863   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:32.052867   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:32.052872   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:32.052876   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:32.052881   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:33.603432   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:33.914043   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:34.069499   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:34.072216   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:34.072233   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:34.072238   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:34.072243   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:34.072249   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:34.072255   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:34.072260   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:34.072265   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:34.072269   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:34.072273   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:34.072278   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:34.072283   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:34.072288   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:35.625183   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:35.936007   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:36.091593   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:36.093503   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:36.093528   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:36.093533   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:36.093536   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:36.093544   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:36.093547   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:36.093552   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:36.093556   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:36.093561   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:36.093565   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:36.093570   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:36.093575   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:36.093580   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:37.646845   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:37.958232   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:38.113638   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:38.115414   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:38.115433   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:38.115438   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:38.115442   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:38.115463   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:38.115469   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:38.115474   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:38.115478   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:38.115483   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:38.115487   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:38.115492   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:38.115496   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:38.115501   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:39.668493   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:39.980044   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:40.135895   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:40.137580   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:40.137598   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:40.137603   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:40.137609   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:40.137615   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:40.137619   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:40.137624   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:40.137629   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:40.137634   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:40.137638   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:40.137643   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:40.137647   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:40.137652   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:41.690160   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:42.001338   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:42.156841   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:42.158324   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:42.158340   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:42.158344   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:42.158349   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:42.158355   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:42.158360   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:42.158365   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:42.158370   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:42.158373   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:42.158378   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:42.158382   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:42.158387   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:42.158391   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:43.711800   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:44.022730   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:44.178541   227 MFFourCoreImpl.cpp:712] destroy finished!
+input_ids_tensor shape after preprocess: (32, 128)
+token_type_ids_tensor shape after preprocess: (32, 128)
+input_ids_2_tensor shape after preprocess: (32, 1, 4, 1, 1, 32)
+I20230103 09:11:44.180043   227 MFFourCoreImpl.cpp:263] input_size: 8192
+I20230103 09:11:44.180059   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:44.180064   227 MFFourCoreImpl.cpp:263] input_size: 16384
+I20230103 09:11:44.180068   227 MFFourCoreImpl.cpp:270] output_size: 16384
+I20230103 09:11:44.180074   227 MFFourCoreImpl.cpp:315] device_id: 0
+I20230103 09:11:44.180079   227 MFFourCoreImpl.cpp:316] fourcore split mode.
+I20230103 09:11:44.180083   227 MFFourCoreImpl.cpp:322] model_path: ../../../../paddle/models/bert-base/model.bin
+I20230103 09:11:44.180088   227 MFFourCoreImpl.cpp:323] model_batchsize: 32
+I20230103 09:11:44.180092   227 MFFourCoreImpl.cpp:324] min_batchsize: 32
+I20230103 09:11:44.180096   227 MFFourCoreImpl.cpp:325] input_size_list num: 3
+I20230103 09:11:44.180101   227 MFFourCoreImpl.cpp:326] output_size_list num: 1
+I20230103 09:11:44.180105   227 MFFourCoreImpl.cpp:327] buf_depth: 1
+I20230103 09:11:44.180110   227 MFFourCoreImpl.cpp:328] num_ringbuffer: 1
+I20230103 09:11:45.733485   227 MFFourCoreImpl.cpp:336] device 0 init finidshed!
+../../../../paddle/models/bert-base/model.bin size are 432614325 
+I20230103 09:11:46.044066   227 MFFourCoreImpl.cpp:346] init_model finidshed!
+batch_size:  32
+fps: 468
+memory_used: 1422M
+I20230103 09:11:46.199594   227 MFFourCoreImpl.cpp:712] destroy finished!
+eval loss: 0.060173, acc: 0.926605504587156, eval done total : 56.9750657081604 s

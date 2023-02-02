@@ -1,0 +1,1 @@
+[{'name': 'bpvbdk', 'rank': -1, 'replicas': 1, 'dtype': 'cpu', 'candidate': '127.0.1.1:53624', 'endpoints': '127.0.1.1:53625'}]

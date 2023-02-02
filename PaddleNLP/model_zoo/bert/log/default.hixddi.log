@@ -1,0 +1,1 @@
+[{'name': 'hixddi', 'rank': -1, 'replicas': 1, 'dtype': 'cpu', 'candidate': '127.0.1.1:45433', 'endpoints': '127.0.1.1:45434'}]
