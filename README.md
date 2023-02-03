@@ -17,7 +17,7 @@
 # 二、 paddle模型开发测试流程
   paddle模型在moffett的板卡上运行需要进行模型编译和模型推理两个步骤
      
-## 2.2 模型编译
+## 2.1 模型编译
   1) 创建paddle模型目录，放入paddle模型文件
   ```
     mkdir -p /my_project/paddle_model/resnet50
@@ -31,7 +31,7 @@
   #Bert Model
   python3 compiler/compile_bert_base.py /my_project/paddle_model/bert_base_uncased/inference.pdmodel -o compile_output/bert-base-uncased
   ```
-## 2.3 板卡上推理
+## 2.2 板卡上推理
   在moffett板卡使用编译生成的模型文件modle.bin进行推理测试。
 
   由于需要测试PaddleClass和PaddleNlp的模型精度，测试用的PipeLine是基于Paddle的PaddleClass(release/2.5)仓库和PaddleNLP(release/2.5)仓库。
