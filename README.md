@@ -19,6 +19,7 @@
      
 ## 2.1 模型编译
   1) 创建paddle模型目录，放入paddle模型文件
+  - example
   ```
     #resnet50
     mkdir -p /my_project/paddle_model/resnet50
