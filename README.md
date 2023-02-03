@@ -20,8 +20,13 @@
 ## 2.1 模型编译
   1) 创建paddle模型目录，放入paddle模型文件
   ```
+    #resnet50
     mkdir -p /my_project/paddle_model/resnet50
+    cd /my_project/paddle2onnx/paddle_model/resnet50
+    wget https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/inference/ResNet50_infer.tar
+    #bert
     mkdir -p /my_project/paddle_model/bert_base_uncased
+    把训练的bert模型放入/my_project/paddle_model/bert_base_uncased目录下
   ```
   2) 将paddle模型编译为runtime可执行的model.bin文件
   - example
