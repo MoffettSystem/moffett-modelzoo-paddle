@@ -15,34 +15,23 @@
 ![Figure2](img/figure2.png)
 
 # 二、 paddle模型开发测试流程
-  paddle模型在moffett的板卡上运行需要进行以下三个步骤
-## 2.1 paddle模型转onnx模型
-  把paddle的模型转化为onnx
-  - example
-  
-    ```
-    #创建模型目录
-    mkdir -p /my_project/paddle2onnx/paddle_model/resnet50
-    mkdir -p /my_project/paddle2onnx/paddle_model/resnet50
-    # 下载paddle模型
-    cd /my_project/paddle2onnx/paddle_model/resnet50
-    wget https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/inference/ResNet50_infer.tar 
-    # paddle模型转onnx
-    cd /my_project/paddle2onnx/
-    python3 compiler_paddle2onnx.py -i paddle_model/ResNet50_infer/inference.pdmodel -o onnx_model
-    ```
+  paddle模型在moffett的板卡上运行需要进行模型编译和模型推理两个步骤
      
-
 ## 2.2 模型编译
-  将onnx模型编译为runtime可执行的model.bin文件
+  1) 创建paddle模型目录，放入paddle模型文件
+  ```
+    mkdir -p /my_project/paddle_model/resnet50
+    mkdir -p /my_project/paddle_model/bert_base_uncased
+  ```
+  2) 将paddle模型编译为runtime可执行的model.bin文件
   - example
   ```
   #PaddleClass Model
-  python3 compiler/compile_PaddleClas.py ../paddle2onnx/onnx_model/ResNet50_infer.onnx -o compile_output/resnet50
+  python3 compiler/compile_PaddleClas.py /my_project/paddle_model/resnet50/inference.pdmodel -o compile_output/resnet50
   #Bert Model
-  python3 compiler/compile_bert_base.py ../model-onnx/bert_base_uncased.onnx -o compile_output/bert-base-uncased
+  python3 compiler/compile_bert_base.py /my_project/paddle_model/bert_base_uncased/inference.pdmodel -o compile_output/bert-base-uncased
   ```
-## 2.3 板块上推理
+## 2.3 板卡上推理
   在moffett板卡使用编译生成的模型文件modle.bin进行推理测试。
 
   由于需要测试PaddleClass和PaddleNlp的模型精度，测试用的PipeLine是基于Paddle的PaddleClass(release/2.5)仓库和PaddleNLP(release/2.5)仓库。

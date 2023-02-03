@@ -17,6 +17,16 @@ from sparse_compile.verifier import Verifier
 
 SPARSE_LOGGER = get_logger("SparseCompile",level = logging.INFO)
 
+def convert_paddle_model(path):
+    model_dir = os.path.dirname(args.model_path)
+    file_name = model_dir.split("/")[-1]+".onnx"
+    save_file_path = os.path.join(os.path.dirname(model_dir),file_name)
+    model_filename = args.model_path.split("/")[-1]
+    params_filename = args.model_filename.replace("pdmodel","pdiparams")
+    cmd = f'paddle2onnx --model_dir {model_dir} --model_filename {model_filename} --params_filename {params_filename} \
+        --save_file {save_file_path} --opset_version=11--enable_onnx_checker=True'
+    os.system(cmd)
+    return save_file_path
 
 def build_engine_onnx(model_file,data_root,args):
     # bert-base and albert
@@ -78,7 +88,7 @@ def build_engine_onnx(model_file,data_root,args):
     return engine
 
 def main(args):
-    onnx_path = args.path
+    onnx_path = convert_paddle_model(args.path)
     data_root = args.data_root
     if args.dump_dir:
         os.makedirs(args.dump_dir, exist_ok=True)
@@ -93,7 +103,7 @@ def main(args):
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("path", type=str, help="the path of onnx model")
+    parser.add_argument("path", type=str, help="the path of paddle model")
     parser.add_argument("--data_root", type=str, help="the path of dataset")
     parser.add_argument("--batch_size", type=int, default=8, help="batch_size")
     parser.add_argument("--dtype", type=str, default="bf16", help="int8,bf16 or MixInt8Bf16")
